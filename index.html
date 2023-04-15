@@ -97,10 +97,10 @@
     <div class="crypto-bar">
         <p id="crypto-prices">Loading crypto prices...</p>
     </div>
-<script>
+  <script>
     // Function to format number with commas
     function numberWithCommas(number) {
-      return number.toString().replace(/\B
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
     // Fetch crypto prices from CoinGecko API
     fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,cardano&vs_currencies=usd')
