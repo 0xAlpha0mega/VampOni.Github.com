@@ -98,7 +98,21 @@
         <p id="crypto-prices">Loading crypto prices...</p>
     </div>
 
-    <!-- Include the following script at the bottom of your body tag -->
-    <script>
-        // Fetch crypto prices from CoinGecko API
-        fetch('https://api.coingecko.com/api/v3
+   <script>
+    // Fetch crypto prices from CoinGecko API
+    fetch('https://api.coingecko.com/api/v3/coins/list')
+        .then(response => response.json())
+        .then(data => {
+            // Extract the crypto prices from the API response
+            const bitcoin = data.find(coin => coin.id === 'bitcoin');
+            const ethereum = data.find(coin => coin.id === 'ethereum');
+            const cardano = data.find(coin => coin.id === 'cardano');
+
+            // Update the DOM with the crypto prices
+            document.getElementById('crypto-prices').innerHTML = `Bitcoin: $${bitcoin.current_price}, Ethereum: $${ethereum.current_price}, Cardano: $${cardano.current_price}`;
+        })
+        .catch(error => {
+            console.error('Error fetching crypto prices:', error);
+            document.getElementById('crypto-prices').innerHTML = 'Error fetching crypto prices';
+        });
+</script>
