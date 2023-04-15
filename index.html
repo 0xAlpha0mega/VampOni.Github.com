@@ -31,7 +31,6 @@
             padding: 0;
         }
         .header ul li {
-            display: inline;
             margin-left: 10px;
         }
         .header ul li a {
@@ -80,51 +79,4 @@
             }
         }
     </style>
-</head>
-<body>
-    <div class="header">
-        <ul>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#about">ABOUT US</a></li>
-            <li><a href="#locations">LOCATIONS</a></li>
-        </ul>
-    </div>
-    <div class="computer-image"></div>
-    <h1>Welcome to My Page!</h1>
-    <div class="crypto-bar">
-        <p id="crypto-prices">Loading crypto prices...<script>
-        // Define the API endpoint and parameters
-        const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=BTC%2CETH%2CADA&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en';
-
-        // Fetch data from the API
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json()) // Parse the response as JSON
-        .then(data => {
-            // Access the crypto prices from the response data
-            const btcPrice = data.find(crypto => crypto.id === 'bitcoin').current_price;
-            const ethPrice = data.find(crypto => crypto.id === 'ethereum').current_price;
-            const adaPrice = data.find(crypto => crypto.id === 'cardano').current_price;
-
-            // Display the crypto prices on your website
-            document.getElementById('btc-price').innerHTML = `$${btcPrice}`;
-            document.getElementById('eth-price').innerHTML = `$${ethPrice}`;
-            document.getElementById('ada-price').innerHTML = `$${adaPrice}`;
-        })
-        .catch(error => {
-            console.error('Error fetching crypto prices:', error);
-        });
-    </script>
-</head>
-<body>
-    <h1>Crypto Prices</h1>
-    <div id="crypto-prices">
-        <p>Bitcoin (BTC) Price: <span id="btc-price">Loading...</span></p>
-        <p>Ethereum (ETH) Price: <span id="eth-price">Loading...</span></p>
-        <p>Cardano (ADA) Price: <span id="ada-price">Loading...</span></p></p>
-    </div>
-
+    <
