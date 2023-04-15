@@ -17,7 +17,7 @@
             background-color: #f2f2f2;
         }
         .header {
-            position: fixed; /* Changed to fixed for better performance on mobile */
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
@@ -85,7 +85,7 @@
     </style>
 </head>
 <body>
-    <div class="header" id="home"> <!-- Added ID for smooth scrolling from the header links -->
+    <div class="header">
         <ul>
             <li><a href="#home">HOME</a></li>
             <li><a href="#about">ABOUT US</a></li>
@@ -97,10 +97,13 @@
     <div class="crypto-bar">
         <p id="crypto-prices">Loading crypto prices...</p>
     </div>
+<head>
+
   <script>
     // Function to format number with commas
     function numberWithCommas(number) {
       return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     // Fetch crypto prices from CoinGecko API
     fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,cardano&vs_currencies=usd')
