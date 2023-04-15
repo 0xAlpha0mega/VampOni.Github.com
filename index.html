@@ -98,10 +98,45 @@
         <p id="crypto-prices">Loading crypto prices...</p>
     </div>
 
-   <script>
+ <head>
+  <title>Crypto Prices</title>
+  <style>
+    /* CSS for the loading spinner */
+    .loader {
+      border: 4px solid #f3f3f3; /* Light grey */
+      border-top: 4px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      margin-right: 5px;
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Crypto Prices</h1>
+  <p id="crypto-prices"><span class="loader"></span>Loading crypto prices...</p>
+
+  <script>
+    // Function to format number with commas
+    function numberWithCommas(number) {
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     // Fetch crypto prices from CoinGecko API
     fetch('https://api.coingecko.com/api/v3/coins/list')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             // Extract the crypto prices from the API response
             const bitcoin = data.find(coin => coin.id === 'bitcoin');
@@ -109,10 +144,12 @@
             const cardano = data.find(coin => coin.id === 'cardano');
 
             // Update the DOM with the crypto prices
-            document.getElementById('crypto-prices').innerHTML = `Bitcoin: $${bitcoin.current_price}, Ethereum: $${ethereum.current_price}, Cardano: $${cardano.current_price}`;
+            document.getElementById('crypto-prices').innerHTML = `Bitcoin: $${numberWithCommas(bitcoin.current_price)}, Ethereum: $${numberWithCommas(ethereum.current_price)}, Cardano: $${numberWithCommas(cardano.current_price)}`;
         })
         .catch(error => {
             console.error('Error fetching crypto prices:', error);
             document.getElementById('crypto-prices').innerHTML = 'Error fetching crypto prices';
         });
-</script>
+  </script>
+</body>
+</html>
