@@ -31,6 +31,7 @@
             padding: 0;
         }
         .header ul li {
+            display: inline;
             margin-left: 10px;
         }
         .header ul li a {
@@ -79,4 +80,30 @@
             }
         }
     </style>
-    <
+</head>
+<body>
+    <div class="header">
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT US</a></li>
+            <li><a href="#locations">LOCATIONS</a></li>
+        </ul>
+    </div>
+    <div class="computer-image"></div>
+    <h1>Welcome to My Page!</h1>
+    <div class="crypto-bar">
+        <p id="crypto-prices">Loading crypto prices...script>
+        // Fetch crypto prices from CoinGecko API
+        fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10')
+        .then(response => response.json())
+        .then(data => {
+            const prices = data.map(coin => coin</p>
+    </div>
+
+    <!-- Include the following script at the bottom of your body tag -->
+    <script>
+        // Fetch crypto prices from CoinGecko API
+        fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=10')
+        .then(response => response.json())
+        .then(data => {
+            const prices = data.map(coin => coin
