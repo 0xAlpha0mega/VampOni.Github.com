@@ -6,6 +6,7 @@
             html, body {
                 height: 100%;
                 margin: 0;
+                font-family: Arial, sans-serif;
             }
             body {
                 display: flex;
@@ -16,8 +17,13 @@
             }
             .header {
                 position: absolute;
-                top: 20px;
-                right: 20px;
+                top: 0;
+                left: 0;
+                right: 0;
+                padding: 10px;
+                background-color: #0074D9;
+                color: #fff;
+                z-index: 2;
             }
             .header ul {
                 list-style-type: none;
@@ -29,11 +35,11 @@
                 margin-left: 10px;
             }
             .header ul li a {
-                color: #000;
+                color: #fff;
                 text-decoration: none;
             }
             .header ul li a:hover {
-                color: #0074D9;
+                color: #005EA6;
             }
             .computer-image {
                 width: 300px;
@@ -49,6 +55,28 @@
                 margin: 0;
                 font-size: 2em;
             }
+            .crypto-bar {
+                width: 100%;
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-align: center;
+            }
+            .crypto-bar p {
+                display: inline;
+                margin: 0;
+                animation: marquee 10s linear infinite;
+            }
+            @keyframes marquee {
+                0% {
+                    transform: translateX(100%);
+                }
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
         </style>
     </head>
     <body>
@@ -61,5 +89,8 @@
         </div>
         <div class="computer-image"></div>
         <h1>Welcome to My Page!</h1>
+        <div class="crypto-bar">
+            <p>Bitcoin: $50,000 | Ethereum: $2,000 | Litecoin: $150 | Ripple: $0.50</p>
+        </div>
     </body>
 </html>
